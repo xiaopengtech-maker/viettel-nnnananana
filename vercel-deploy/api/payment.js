@@ -14,8 +14,8 @@ module.exports = async function handler(req, res) {
     try {
       // ===== ĐỔI TÀI KHOẢN: SỬA 2 DÒNG NÀY RỒI COMMIT =====
       const config = {
-        isdn:     '84339941084',
-        token:    'c51ee751-7e24-40db-922d-2eccb8ec6a23-d2ViXzg0MzM5OTQxMDg0',
+        isdn:     '84346784490',
+        token:    'ada21f4c-b289-4c7b-a615-8afe35b2f3c6-d2ViXzg0MzQ2Nzg0NDkw',
         lang:     'vi',
         pay_code: 'topup_web'
       };
