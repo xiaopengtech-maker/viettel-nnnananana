@@ -10,46 +10,9 @@ module.exports = async function handler(req, res) {
     return res.status(200).end();
   }
 
-  if (req.method === 'POST' || req.method === 'GET') {
-    try {
-      // ===== ĐỔI TÀI KHOẢN: SỬA 2 DÒNG NÀY RỒI COMMIT =====
-      const config = {
-        isdn:     '84346784490',
-        token:    'ada21f4c-b289-4c7b-a615-8afe35b2f3c6-d2ViXzg0MzQ2Nzg0NDkw',
-        lang:     'vi',
-        pay_code: 'topup_web'
-      };
-      // ========================================================
-
-      // POST vào API createToken
-      const apiUrl = `https://apigami.viettel.vn/mvt-api/myviettel.php/momo/createToken?lang=${config.lang}&pay_code=${config.pay_code}&token=${config.token}&isdn=${config.isdn}`;
-
-      console.log('Calling createToken API with isdn:', config.isdn);
-
-      const response = await fetch(apiUrl, {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
-      });
-
-      const data = await response.json();
-      console.log('API Response:', data);
-
-      return res.status(200).json(data);
-
-    } catch (error) {
-      console.error('Error:', error);
-      return res.status(500).json({
-        errorCode: 1,
-        message: 'Lỗi khi gọi API: ' + error.message
-      });
-    }
-  }
-
-  return res.status(405).json({
-    errorCode: 1,
-    message: 'Method not allowed'
+  // Bất kỳ request nào (GET, POST, ...) cũng trả về lỗi 3700
+  return res.status(200).json({
+    errorCode: 3700,
+    message: 'Liên kết thanh toán không hợp lệ hãy chuyển sang https://tammi.vn/ để thực hiện thanh toán.'
   });
-}
+};
